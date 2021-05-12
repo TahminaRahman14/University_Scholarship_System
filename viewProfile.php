@@ -9,24 +9,24 @@ include "Connection.php";
 
 $name =  $_SESSION["u_name"];
 
-$id=null;
-$u_name= null;
-$f_name=null;
+$id = null;
+$u_name = null;
+$f_name = null;
 $cgpa = null;
 $credit = null;
 $major = null;
-$mail=null;
-$mobile=null;
+$mail = null;
+$mobile = null;
 
-$sql = "SELECT * FROM student_info WHERE username='". $name ."'";
+$sql = "SELECT * FROM student_info WHERE username='" . $name . "'";
 
 
 
 $result = $conn->query($sql);
 
 
-while($row = $result->fetch_assoc()) {
-  $id= $row['S_id'];
+while ($row = $result->fetch_assoc()) {
+  $id = $row['S_id'];
   $u_name = $row['username'];
   $f_name = $row['FullName'];
   $cgpa = $row['CGPA'];
@@ -36,7 +36,6 @@ while($row = $result->fetch_assoc()) {
   $mobile = $row['MobileNumber'];
 
   $status = $row['status'];
-
 }
 
 $conn->close();
@@ -55,14 +54,12 @@ $conn->close();
 
   <!-- Bootstrap core CSS -->
   <!-- <link rel="stylesheet" href="./vendor/bootstrap/css/bootstrap.min.css"> -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
-    integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 
   <!-- Custom styles for this template -->
-   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css">
 
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"
-    integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
@@ -81,7 +78,7 @@ $conn->close();
     <!-- Sidebar -->
     <nav id="sidebar">
       <div class="sidebar-header text-center pt-5">
-          <h2>STUDENT PANEL</h2>
+        <h2>STUDENT PANEL</h2>
         <h5 class="sidebar-logo-text pt-2">University Scholarship Management System</h5>
       </div>
 
@@ -92,13 +89,13 @@ $conn->close();
 
 
         <?php
-            if($status == '0'){        
+        if ($status == '0') {
         ?>
-        <li>
-          <a href="applySchol.php"><i class="fa fa-tachometer"></i><span style="margin-left: 10px;"></span>Apply for Scholarship</a>
-        </li>
+          <li>
+            <a href="applySchol.php"><i class="fa fa-tachometer"></i><span style="margin-left: 10px;"></span>Apply for Scholarship</a>
+          </li>
         <?php
-            }
+        }
         ?>
         <li>
           <a href="check.php"><i class="fa fa-tachometer"></i><span style="margin-left: 10px;"></span>Check Result</a>
@@ -106,7 +103,7 @@ $conn->close();
         <li>
           <a href="index.php"><i class="fa fa-tachometer"></i><span style="margin-left: 10px;"></span>Logout</a>
         </li>
-          </ul>
+      </ul>
 
     </nav>
     <!-- /#sidebar-wrapper -->
@@ -115,14 +112,13 @@ $conn->close();
     <div id="page-content-wrapper">
 
       <nav class="navbar navbar-expand-lg navbar-light cstm-bg-navbar">
-         <button class="btn btn-collapse" id="menu-toggle" style="background-color: #52616b00;"><span
-            style="font-size:20px;cursor:pointer" onclick="openNav()">&#9776;
-          </span></button> 
-        <h2 class="pl-5">Hi <?php echo $u_name;?>!</h2> 
+        <button class="btn btn-collapse" id="menu-toggle" style="background-color: #52616b00;"><span style="font-size:20px;cursor:pointer" onclick="openNav()">&#9776;
+          </span></button>
+        <h2 class="pl-5">Hi <?php echo $u_name; ?>!</h2>
       </nav>
 
       <div class="container-fluid">
-       
+
         <div class="row">
           <div class="col-lg-1 col-md-1 col-sm-0"></div>
           <div class="col-lg-10 col-md-10 col-sm-12">
@@ -132,10 +128,10 @@ $conn->close();
               </div>
               <div class="card-body">
                 <form action="" method="post">
-                 
+
 
                   <label for="student_id">Student ID :</label>
-                  <span  id="id" name="id" value=""><?php echo $id; ?></span><br>
+                  <span id="id" name="id" value=""><?php echo $id; ?></span><br>
 
                   <label for="username">Username : </label>
                   <span type="text" id="username" name="username"><?php echo $u_name; ?></span><br>
@@ -158,11 +154,11 @@ $conn->close();
                   <label for="mobile">Mobile Number : </label>
                   <span type="number" id="mobile" name="mobile" value=""><?php echo $mobile; ?></span><br>
                   <div class="row mt-3">
-                      <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="col-lg-6 col-md-6 col-sm-12">
                       <button type="" value="">
-                        <a href = "myprofile.php" >EDIT</a>
-                        </button>
-                      </div>
+                        <a href="myprofile.php">EDIT</a>
+                      </button>
+                    </div>
                   </div>
                 </form>
               </div>
@@ -184,8 +180,8 @@ $conn->close();
 
   <!-- Menu Toggle Script -->
   <script type="text/javascript">
-    $(document).ready(function () {
-      $('#menu-toggle').on('click', function () {
+    $(document).ready(function() {
+      $('#menu-toggle').on('click', function() {
         $('#sidebar').toggleClass('active');
       });
     });
